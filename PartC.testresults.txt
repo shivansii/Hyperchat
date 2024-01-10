@@ -1,0 +1,128 @@
+/*
+ * GROUP 18
+ *
+ * Name: Kartik Kapoor
+ * NSID: KAK110
+ * Student Number: 11269913
+ *
+ * Name: Shivansi Prajapati
+ * NSID: LZU375
+ * Student Numbr: 11326745
+ */
+FROM tux8
+
+
+./s-chat 30005 tux6 30009
+Socket created successfully
+Socket binded successfully
+hello
+Recieved at 0::0
+Message : whatuop
+
+Recieved at 0::0
+Message : 
+
+Recieved at 0::0
+Message : 
+
+Recieved at 0::0
+Message : helloooo
+
+^C
+lzu375@tux8:~/Desktop/CMPT332/a1/cmpt332-2023-group18/a2> ./s-chat 30005 tux6 30009
+Socket created successfully
+Socket binded successfully
+Hey there!
+Recieved at 0::0
+Message : Hello, from the other side
+
+This is a long message
+Recieved at 0::0
+Message : short messgae
+
+Typing one line at a time
+Typing
+quickly
+q
+u
+i
+c
+k'l
+y
+checking if messages are sent in sequesnce
+s
+e
+q
+u
+e
+n
+c
+e
+
+---------------------------------------------------------
+FROM tux6
+
+./s-chat 30009 tux8 30005
+Socket created successfully
+Socket binded successfully
+Recieved at 0::0
+Message : Hey there!
+
+Hello, from the other side
+Recieved at 0::0
+Message : This is a long message
+
+short messgae       
+Recieved at 0::0
+Message : Typing one line at a time
+
+Recieved at 0::0
+Message : Typing
+
+Recieved at 0::0
+Message : quickly
+
+Recieved at 0::0
+Message : q
+
+Recieved at 0::0
+Message : u
+
+Recieved at 0::0
+Message : i
+
+Recieved at 0::0
+Message : c
+
+Recieved at 0::0
+Message : k'l
+
+Recieved at 0::0
+Message : y
+
+Recieved at 0::0
+Message : checking if messages are sent in sequesnce
+
+Recieved at 0::0
+Message : s
+
+Recieved at 0::0
+Message : e
+
+Recieved at 0::0
+Message : q
+
+Recieved at 0::0
+Message : u
+
+Recieved at 0::0
+Message : e
+
+Recieved at 0::0
+Message : n
+
+Recieved at 0::0
+Message : c
+
+Recieved at 0::0
+Message : e

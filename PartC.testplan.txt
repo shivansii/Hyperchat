@@ -1,0 +1,40 @@
+
+/*
+ * GROUP 18
+ *
+ * Name: Kartik Kapoor
+ * NSID: KAK110
+ * Student Number: 11269913
+ *
+ * Name: Shivansi Prajapati
+ * NSID: LZU375
+ * Student Numbr: 11326745
+ */
+ 
+A more concise and simplified test plan:
+
+Test Plan for "s-chat" Program
+
+1. Socket and Network Testing
+- Verify socket creation and binding.
+- Test sending and receiving data over the socket.
+- Check handling of boundary values for port numbers.
+- Ensure compatibility with different operating systems and network environments.
+- Perform network testing with multiple clients.
+
+2. Thread and Process Testing
+- Confirm successful creation of threads (e.g., "send_messages," "receive_messages").
+- Verify threads can interact and communicate as expected.
+- Test the "keyboard_input" thread's ability to read from the keyboard and send input to the "server" thread.
+
+3. Progam functionality testing
+- Verify the "server" thread's ability to receive messages from the "keyboard_input" thread and send them to the "send_messages" thread.
+- Test that the "send_messages" thread can send messages to the client and that the "receive_messages" thread can receive messages from the client.
+
+4. Load testing
+- Test the program's ability to handle multiple client chats back to back.
+- Test if they are recieved in the correct sequence.
+- Test if the program can handle multiple clients at the same time.
+
+
+

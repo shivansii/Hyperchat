@@ -1,0 +1,102 @@
+/*
+ * GROUP 18
+ *
+ * Name: Kartik Kapoor
+ * NSID: KAK110
+ * Student Number: 11269913
+ *
+ * Name: Shivansi Prajapati
+ * NSID: LZU375
+ * Student Numbr: 11326745
+ */
+------------------Expected Process Structure--------------------
+
+Define global variables and data structures:
+- Create two lists (input_list and output_list) for managing messages
+- Define maximum message count (MAX_MSGS)
+- Create an array of message strings (msgs) with a maximum size of MAX_MSGS
+- Define data structures for user messages (userMsg) and server messages (serverMsg)
+- enum for the type of message (MSG_IO, MSG_RECIEVED)
+- Define processes for receiving, displaying, and sending messages, as well as a server process
+
+
+The mainp function initializes the server, sets up the sockets, and creates the 5 threads . It sets up the socket for communication, initializes threads for each task. 
+
+mainp(int argc, char *argv[])
+Functionality: 
+Function mainp(argc, argv):
+Initialize data structures, lists, and message arrays
+Process command-line arguments to get server port, client device name, and client port
+Create a UDP socket and bind it to the server's specified port
+Set up the client's address for communication
+Prepare a ThreadArgs structure with socket and address details
+Configure non-blocking I/O for standard input and the socket
+Create threads for message sending, receiving, display, user input, and server processing
+Check for errors during socket and thread creation
+If errors occur, display error messages and exit the program
+
+
+Receiving Thread: receive_messages thread is responsible for receiving UDP datagrams. It extracts the message content and the sender's information, and then sends the received message to the server process for further handling.
+
+receive_messages(void *arg)
+Functionality:
+It uses recvfrom and operates on a non-blocking 
+socket. 
+It reads the message into the client_msg structure.
+It retrieves information about the sender's host and IP address.
+It constructs a server_msg, specifying the type of message (MSG_RECIEVED) and the client message.
+
+
+Displaying Thread: display_received_messages process displays received messages in real-time. It continuously monitors the output_list, which contains messages received from clients. When messages are available in the list:
+
+display_received_messages(void *arg)
+Functionality: 
+It retrieves the first message (as a userMsg structure) from the output_list.
+It prints the timestamp of when the message was received (curr_msg.tv), indicating the seconds and microseconds.
+It prints the content of the received message (curr_msg.msg).
+It removes the processed message from the output_list.
+
+
+Keyboard Input Thread: keyboard_input process continuously reads user input from the keyboard. When successful, it creates a message structure and sends it to the server
+
+keyboard_input(void *arg)
+Functionality:
+Initializes usr_message to store input and sets the message length.
+Enters a loop and uses the non-blocking function read() to read input from the
+keyboard.
+Reads input from the keyboard into usr_message.
+If successful, creates a message structure.
+Sends this message to the server process for further handling.
+
+
+Message Sending Thread: Sends messages from the message list to the remote 
+user via UDP using sendto. It also operates on a non-blocking socket.
+The send_messages process is responsible for sending messages to clients.
+
+send_messages(void *arg)
+Functionality:
+Continuously checks for messages in the input_list.
+If there are messages to send in the list, it:
+Retrieves the first message from the input_list.
+Creates a user_msg structure and records the current time.
+Copies the message content into the user_msg.
+Sends the user_msg to the client using the sendto function.
+Checks the result of the send operation and continues if it's non-blocking (EAGAIN).
+Removes the processed message from the input_list.
+
+Server Thread: Coordinates message handling, manages access to message lists, 
+and ensures synchronization among the threads.
+
+server(void *arg)
+Functionality:
+Depending on the message type (msg->type), it performs different actions:
+If the message type is MSG_IO, it indicates that the message comes from the keyboard input. It prints the content of the message and appends it to the input_list for further processing.
+If the message type is MSG_RECIEVED, it means the message is from the received_message process. It appends the message to the output_list.
+After processing a message, it sends a reply to the sender using Reply 
+
+---------------------Error Handling---------------------
+The program implementS appropriate error handling for socket operations, 
+thread creation, and other potential issues. All functions should check update 
+the server of any errors that occur.
+Error messages should be displayed to the user.
+
